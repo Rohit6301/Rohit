@@ -1,0 +1,23 @@
+{
+  "family": "etoe-task-def",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "1024",          // 1 vCPU
+  "memory": "3072",       // 3 GB in MB
+  "executionRoleArn": "arn:aws:iam::ECRURI:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "etoe-app",
+      "image": "ecruri.dkr.ecr.ap-south-1.amazonaws.com/etoe/app:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ]
+}
